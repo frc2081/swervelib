@@ -17,26 +17,26 @@ static double radians_to_degrees(double radians) {
 
 swervelib::swervelib(double wheelbase, double trackwidth) {
   R = sqrt(pow(wheelbase, 2) + pow(trackwidth, 2));
+  _wheelbase = wheelbase;
 }
 
 swervelib::wheel swervelib::calcWheelVect(
         double x,
         double y,
-        double rudder,
-        double R,
-        double wheelbase) {
+        double rudder) {
 
-  double A = x - rudder * (wheelbase/R);
-  double B = x + rudder * (wheelbase/R);
-  double C = y - rudder * (wheelbase/R);
-  double D = y + rudder * (wheelbase/R);
+  A = x - rudder * (_wheelbase/R);
+  B = x + rudder * (_wheelbase/R);
+  C = y - rudder * (_wheelbase/R);
+  D = y + rudder * (_wheelbase/R);
 
-  double target_WS1 = sqrt(pow(B, 2) + pow(C, 2));
-  double target_WS2 = sqrt(pow(B, 2) + pow(D, 2));
-  double target_WS3 = sqrt(pow(A, 2) + pow(D, 2));
-  double target_WS4 = sqrt(pow(A, 2) + pow(C, 2));
-  double MAX_WS = std::max({target_WS1, target_WS2, target_WS3, target_WS4});
+  target_WS1 = sqrt(pow(B, 2) + pow(C, 2));
+  target_WS2 = sqrt(pow(B, 2) + pow(D, 2));
+  target_WS3 = sqrt(pow(A, 2) + pow(D, 2));
+  target_WS4 = sqrt(pow(A, 2) + pow(C, 2));
+  MAX_WS = std::max({target_WS1, target_WS2, target_WS3, target_WS4});
   wheel *whl = new swervelib::wheel;
+
   // This is a mess
   if (target_WS1 > 1) {
     whl->speed1 = target_WS1/MAX_WS;
