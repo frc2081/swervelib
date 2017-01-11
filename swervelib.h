@@ -1,7 +1,7 @@
 /* Copyright 2016 Charles Young */
 
-#ifndef SWERVELIB_H
-#define SWERVELIB_H
+#ifndef SWERVE_TEST_SWERVELIB_HPP_H
+#define SWERVE_TEST_SWERVELIB_HPP_H
 
 #include <cmath>
 
@@ -20,4 +20,4 @@ public:
     } whl;
     wheel calcWheelVect(double x, double y, double rudder);
 };
-#endif /* SWERVELIB_H */
+#endif //SWERVE_TEST_SWERVELIB_HPP_H
