@@ -1,7 +1,7 @@
 /* Copyright 2016 Charles Young */
 
 #include <algorithm>
-#include "swervelib.hpp"
+#include "swervelib.h"
 
 double degrees_to_radians(double degrees) {
 	double radians;
