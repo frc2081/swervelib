@@ -63,7 +63,7 @@ swervelib::wheel swervelib::calcWheelVect(
   * Gives the angle in radians between the positive X axis and the point given
   * by the coordinates.  The result is then converted to degrees.
   */
-  if (x > 0 && y > 0 && rudder > 0) {
+  if (x != 0 && y != 0 && rudder != 0) {
     whl->angle1 = radians_to_degrees(atan2(B, C));
     whl->angle2 = radians_to_degrees(atan2(B, D));
     whl->angle3 = radians_to_degrees(atan2(A, D));
