@@ -33,3 +33,7 @@
 
 # Build
 build/
+
+# CMake
+CMakeLists.txt
+cmake-build-debug/

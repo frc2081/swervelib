@@ -1,17 +1,15 @@
-/* Copyright 2016 Charles Young */
-
 #include <algorithm>
 #include "swervelib.h"
 
 static double degrees_to_radians(double degrees) {
   double radians;
-  radians = (degrees * M_PI)/180;
+  radians = (degrees * M_PI) / 180;
   return radians;
 }
 
 static double radians_to_degrees(double radians) {
   double degrees;
-  degrees = radians * 180/M_PI;
+  degrees = radians * 180 / M_PI;
   return degrees;
 }
 
@@ -25,10 +23,10 @@ swervelib::wheel swervelib::calcWheelVect(
         double y,
         double rudder) {
 
-  A = x - rudder * (_wheelbase/R);
-  B = x + rudder * (_wheelbase/R);
-  C = y - rudder * (_wheelbase/R);
-  D = y + rudder * (_wheelbase/R);
+  A = x - rudder * (_wheelbase / R);
+  B = x + rudder * (_wheelbase / R);
+  C = y - rudder * (_wheelbase / R);
+  D = y + rudder * (_wheelbase / R);
 
   target_WS1 = sqrt(pow(B, 2) + pow(C, 2));
   target_WS2 = sqrt(pow(B, 2) + pow(D, 2));
@@ -37,25 +35,15 @@ swervelib::wheel swervelib::calcWheelVect(
   MAX_WS = std::max({target_WS1, target_WS2, target_WS3, target_WS4});
   wheel *whl = new swervelib::wheel;
 
-  // This is a mess
-  if (target_WS1 > 1) {
-    whl->speed1 = target_WS1/MAX_WS;
+  if (MAX_WS > 1) {
+    whl->speed1 /= MAX_WS;
+    whl->speed2 /= MAX_WS;
+    whl->speed3 /= MAX_WS;
+    whl->speed4 /= MAX_WS;
   } else {
     whl->speed1 = target_WS1;
-  }
-  if (target_WS2 > 1) {
-    whl->speed2 = target_WS2/MAX_WS;
-  } else {
     whl->speed2 = target_WS2;
-  }
-  if (target_WS3 > 1) {
-    whl->speed3 = target_WS3/MAX_WS;
-  } else {
     whl->speed3 = target_WS3;
-  }
-  if (target_WS4 > 1) {
-    whl->speed4 = target_WS4/MAX_WS;
-  } else {
     whl->speed4 = target_WS4;
   }
 
