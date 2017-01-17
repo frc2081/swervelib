@@ -17,4 +17,4 @@ Variables are named such that their number coincides with that quadrant of the r
 | speed3 and angle3 | Back Left         |
 | speed4 and angle4 | Back Right        |
 
-***`variable`***` = static_cast<float>(swerve->whl.`***`variable name`***`);`
+***`PID Controller`***`->SetSetpoint(swerveLib->whl-> `***`variable name`***`);`
