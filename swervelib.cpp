@@ -33,7 +33,7 @@ void swervelib::calcWheelVect(double x,
     target_WS3 = sqrt(pow(A, 2) + pow(D, 2));
     target_WS4 = sqrt(pow(A, 2) + pow(C, 2));
     MAX_WS = std::max({target_WS1, target_WS2, target_WS3, target_WS4});
-    
+
     if (MAX_WS > 1) {
         target_WS1 /= MAX_WS;
         target_WS2 /= MAX_WS;

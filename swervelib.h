@@ -21,7 +21,7 @@ private:
     double A, B, C, D, R, _width, _length;
 
 public:
-    swervelib(double wheelbase, double trackwidth);
+    swervelib(double width, double length);
 
     virtual ~swervelib() = default;
 
@@ -29,4 +29,5 @@ public:
 
     void calcWheelVect(double x, double y, double rudder);
 };
+
 #endif //SWERVELIB_H_
