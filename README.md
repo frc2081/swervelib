@@ -7,7 +7,7 @@
 ` swerve->calcWheelVect(`***`x`***`, `***`y`***`, `***`rudder`***`); `
 
 ##### Casting Values to Motors
-The servwelib vector calculation returns a struct with variables for wheel speed and wheel angle.
+The swervelib vector calculation returns a struct with variables for wheel speed and wheel angle.
 Variables are named such that their number coincides with that quadrant of the robot.
 
 | Variable Names    | Physical Location |
