@@ -1,58 +1,57 @@
 #!/usr/bin/env
 import math
-#pi is math.pi
 
 
+class Wheel:
+    def __init__(self):
+        # front right, front left, rear left, rear right
+        self.speed1 = 0
+        self.speed2 = 0
+        self.speed3 = 0
+        self.speed4 = 0
+        # front right, front left, rear left, rear right
+        self.angle1 = 0
+        self.angle2 = 0
+        self.angle3 = 0
+        self.angle4 = 0
 
-class wheel:
-    #front right, front left, rear left, rear right
-    speed1 = 0
-    speed2 = 0
-    speed3 = 0
-    speed4 = 0 
-    #front right, front left, rear left, rear right
-    angle1 = 0
-    angle2 = 0
-    angle3 = 0
-    angle4 = 0
 
-class swervelib(object):
-    _target_WS1 = 0
-    _target_WS2 = 0
-    _target_WS3 = 0
-    _target_WS4 = 0
-    _MAX_WS = 0
-    _target_WA1 = 0
-    _target_WA2 = 0
-    _target_WA3 = 0
-    _target_WA4 = 0
-    _A = 0
-    _B = 0
-    _C = 0
-    _D = 0
-    _R = 0
-    _width = 0
-    _length = 0
-    whl = wheel()
+class SwerveLib:
+    def __init__(self, width, length):
+        # width = wheelbase, length = track width
+        self._R = math.sqrt(pow(width, 2) + pow(length, 2))
+        self._width = width
+        self._length = length
+        self._target_WS1 = 0
+        self._target_WS2 = 0
+        self._target_WS3 = 0
+        self._target_WS4 = 0
+        self._MAX_WS = 0
+        self._target_WA1 = 0
+        self._target_WA2 = 0
+        self._target_WA3 = 0
+        self._target_WA4 = 0
+        self._A = 0
+        self._B = 0
+        self._C = 0
+        self._D = 0
+        self._R = 0
+        self._width = 0
+        self._length = 0
+        self.whl = Wheel()
 
     def radians_to_degrees(self, radians):
         degrees = radians * 180 / math.pi
         return degrees
 
-    def __init__(self, width, length):
-        #width = wheelbase, length = track width
-        self._R = math.sqrt(pow(width, 2) + pow(length, 2))
-        self._width = width
-        self._length = length
-
-        #_target_WS1 = 0, _target_WS2 = 0, _target_WS3 = 0, _target_WS4 = 0, _MAX_WS = 0
-        #_target_WA1 = 0, _target_WA2 = 0, _target_WA3 = 0, _target_WA4 = 0
+        # _target_WS1 = 0, _target_WS2 = 0, _target_WS3 = 0, _target_WS4 = 0, _MAX_WS = 0
+        # _target_WA1 = 0, _target_WA2 = 0, _target_WA3 = 0, _target_WA4 = 0
     def calcWheelVect(self, x, y, rudder):
         self._A = x - rudder * (self._length / self._R)
         self._B = x + rudder * (self._length / self._R)
         self._C = y - rudder * (self._width / self._R)
         self._D = y + rudder * (self._width / self._R)
-        #_A = _B
+        # _A = _B
         self._target_WS1 = math.sqrt(pow(self._B, 2) + pow(self._C, 2))
         self._target_WS2 = math.sqrt(pow(self._B, 2) + pow(self._D, 2))
         self._target_WS3 = math.sqrt(pow(self._A, 2) + pow(self._D, 2))
@@ -78,4 +77,3 @@ class swervelib(object):
         self.whl.angle2 = 360 - (self._target_WA2 + 180)
         self.whl.angle3 = 360 - (self._target_WA3 + 180)
         self.whl.angle4 = 360 - (self._target_WA4 + 180)
-
